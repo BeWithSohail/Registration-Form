@@ -222,14 +222,14 @@ try {
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'sohailalam6027@gmail.com';                     //SMTP username
-    $mail->Password   = 'secret key';                               //SMTP password
+    $mail->Username   = 'user@example.com';                     //SMTP username
+    $mail->Password   = 'secret';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;                                 //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('sohailalam6027@gmail.com', 'contact form');
-    $mail->addAddress('sohailalam6027@gmail.com', 'portfolio');     //Add a recipient
+    $mail->setFrom('from@example.com', 'Mailer');
+    $mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
     // $mail->addAddress('ellen@example.com');               //Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
     // $mail->addCC('cc@example.com');
@@ -242,7 +242,8 @@ try {
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'testing subject';
-    $mail->Body = "Name: $name\nEmail: $email\n\nMessage:\n$description";
+    $mail->Body = "Name: $name : <br> Email : $email:<br> Description : $description;";
+
     $mail->send();
         echo "Email sent successfully!";
     } catch (Exception $e) {
